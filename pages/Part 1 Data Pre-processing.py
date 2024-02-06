@@ -24,8 +24,8 @@ def main():
     st.title("Part 1: Data Pre-processing")
 
     # Reading datasets
-    df = pd.read_csv("./Pages/labeled/labeled.csv")
-    ud = pd.read_csv("./Pages/unlabeled/unlabeled.csv")  
+    df = pd.read_csv("./pages/labeled/labeled.csv")
+    ud = pd.read_csv("./pages/unlabeled/unlabeled.csv")  
 
     # Display data
     st.subheader("Labeled Data:")
