@@ -6,5 +6,5 @@ scikit-learn
 joblib
 matplotlib
 seaborn
-streamlit-reveal-slides
+streamlit_reveal_slides
 
