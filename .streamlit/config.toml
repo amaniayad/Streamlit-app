@@ -1,0 +1,4 @@
+[server]
+# The port where the server will listen for browser connections.
+# Default: 8501
+
