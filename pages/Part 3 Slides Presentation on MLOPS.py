@@ -2,119 +2,99 @@ import streamlit as st
 import reveal_slides as rs
 
 sample_markdown = r"""
-# AERO DELAY 
+## Machine Learning Operations (MLOps)
 `Presented By:`<br> 
 `Belmiloud Maroua`<br>
 `Ayad Amani`<br> 
 `Senkadi Khawla`
 ---
-# Project Timeline
+## Project Timeline:
 
-- Background And Objectifs Of the Project
-- Data Understanding
-- Modelling
-- Evaluation
-- Deployment
+- Definition of MLOPs
+- Objectives
+- Steps of Mlops
+- MLOps platforms
+- Conclusion
+---
+## Definition:
+`Machine Learning Operations (MLOps)` is a set of practices that combines Machine Learning (ML) and DevOps (Development and Operations) to automate the end-to-end process of deploying and managing ML models in production.
 
 ---
-## Background And Objectifs
-
-Using machine learning, this project helps predict and address flight delays, making travel smoother for passengers and the aviation industry.
----
-## Data Understanding
-| `Source Of The Data`   | Airline On-Time Performance and Causes of Flight Delays dataset reported by major U.S. airlines |
-| ------------------------------------- | ---------------------------------------------------------- |
-| `Shape` | Labeled dataset :(100,000,9)<br>Unlabeled dataset :(100,000,8)                             |
-| `Label Information`    | The class is represented by the "dep_delayed_15min" column, is of binary type, indicating whether a flight is delayed by 15 minutes or more (yes or no).                              |
+## Objectives:
+1. Increase the reliability and efficiency of ML deployments.
+2. Reduce the time it takes to get ML models into production.
+3. Improve the collaboration between ML engineers, data scientists, and DevOps engineers.
 
 ---
-## Features 
+## Steps of Mlops
+`Data preparation:` This involves cleaning and formatting the data that will be used to train the ML model.<br>
+`Model training:` This involves using an algorithm to learn from the data and create a model that can make predictions.<br>
+`Model evaluation:` This involves testing the model to see how accurate it is.<br>
+`Model deployment:` This involves making the model available to users so that they can use it to make predictions.<br>
+`Model monitoring:` This involves tracking the performance of the model over time and making adjustments as needed.
+---
+## MLOps platforms:
+There are commercial MLOps platforms such as:
+`1.Amazon SageMaker:` Amazon SageMaker is an MLOps platform that is offered by Amazon Web Services (AWS)<br>
+`2.Azure Machine Learning:` Azure Machine Learning is an MLOps platform that is offered by Microsoft Azure.<br>
+`3.TGoogle Cloud ML Engine:` Google Cloud ML Engine is an MLOps platform that is offered by Google Cloud Platform (GCP).<br>
+Theye all provide a set of tools for building, deploying, and managing ML models in production.
+--
+In addition to these tools, there are also a number of open source MLOps frameworks available, Some of them include:<br>
+`1.Kubeflow`<br>
+`2.MLflow`<br>
+`3.TensorFlow Extended (TFX)`
+---
+## Kubeflow:
+Kubeflow is an open-source platform built on Kubernetes, designed to simplify the deployment, scaling, and management of machine learning workflows in production.
+--
+`Features:`
+
 |  |         |
 |----:|-----------------|
-| 1   | Month           |
-| 2   | DayOfMonth      |
-| 3   | DayOfWeek       |
-| 4   | DepTime         |
-| 5   | UniqueCarrier   |
-| 6   | Origin          |
-| 7   | Dest            |
-| 8   | Distance        |
+| 1   |Pipeline Orchestration          |
+| 2   |Model Serving    |
+| 3   |Experiment Tracking      |
+| 4   |Hyperparameter Tuning        |
 
+`Use Cases:` Kubeflow is suitable for organizations looking to deploy and manage machine learning workflows at scale using Kubernetes.
 ---
-## Preprocessing
-| `Handling Missing Values`   | No missing data was detected. |
-| ------------------------------------- | ---------------------------------------------------------- |
-| `Handling Outliers` | Employing the Interquartile Range (IQR) method to handle outliers in the feature “Distance”                             |
-| `NUMERISATION`    | Categorical features were encoded using the Ordinal Encoder from the scikit-learn library<br>'c-' prefixes in the features were removed<br>the data was converted to float format for consistency.|
----
-## Preprocessing
-| `Feature Scaling`   | The Min-Max Scaler from scikit-learn was applied to normalize the values within the range of [0, 1]. |
-| ------------------------------------- | ---------------------------------------------------------- |
-| `Feature Selection` | None of the features exhibit high correlation with the class, So all the available features are used for model training.                             |
-| `Data Splitting`    | Employing a standard train-test split methodology.|
----
-## Modeling 
-## Semi-Supervised Learning
-Semi-supervised learning is a machine learning approach that sits between supervised and unsupervised learning.   
- Unlike supervised learning, which relies entirely on labeled data, and unsupervised learning, which deals with unlabeled data
----
-## Approaches
-### 1/ Self-Training
-The self-training algorithm starts with a model trained on a small set of labeled data. It then uses this model to make predictions on unlabeled data. 
-### 2/ Label Propagation
-Label propagation involves creating a graph representation of the dataset, where nodes are instances and edges connect similar instances. Labels from labeled instances are then propagated to their graph neighbors.
----
-## Self Training:
-<img src="./self.png" alt="self training" width="1500" height="800">
----
-## Label Propagation:
-<img src="./label.png" alt="label propagation" width="1500" height="800">
----
-## Evaluation Metrics:
-| | |
-| ------------------------------------- | ---------------------------------------------------------- |
-| `accuracy`   | `recall` |
-| `precision` | `F1-score`    |
+## MLflow:
+MLflow is an open-source platform for managing the end-to-end machine learning lifecycle, including experimentation, reproducibility, deployment, and monitoring.
+--
+`Features:`
 
-We focus on precision as a priority metric, aiming to minimize false negatives. Predicting a flight as not delayed when it is carries less impact than risking passengers missing their flight due to an incorrect delay prediction.
----
-## Model Results:
+|  |         |
+|----:|-----------------|
+| 1   |Experiment Tracking          |
+| 2   |Model Packaging    |
+| 3   |Model Deployment      |
+| 4   |Model Registry        |
 
-| `1)K-Nearest Neighbors (KNN)`| `2)Naive Bayes`              |
-|--------------------------------|--------------------------------|
-| Accuracy : 59%          | Accuracy : 80%           |
-| Precision : 74%           | Precision : 65%           |
-| Recall : 59%         | Recall : 80%           |
-| F1-Score : 63%           | F1-Score : 72%           |
+`Use Cases:` MLflow is suitable for organizations looking for a unified platform to manage their machine learning workflows, from experimentation to production deployment.
+---
+## TensorFlow Extended (TFX):
+TensorFlow Extended (TFX) is an end-to-end platform for deploying production-ready machine learning pipelines powered by TensorFlow.
+--
+`Features:`
 
----
+|  |         |
+|----:|-----------------|
+| 1   |Pipeline Construction          |
+| 2   |Model Versioning    |
+| 3   |Model Evaluation      |
+| 4   |Integration with TensorFlow      |
 
-| `3)Logistic Regression`| `4)Decision Tree`              |
-|--------------------------------|--------------------------------|
-| Accuracy : 80%          | Accuracy : 52%           |
-| Precision : 73%           | Precision : 73%           |
-| Recall : 80%         | Recall : 52%           |
-| F1-Score : 72%           | F1-Score : 57%           |
----
-| `5)SVM`| `6)Label propagation`              |
-|--------------------------------|--------------------------------|
-| Accuracy : 80%          | Accuracy : 78%           |
-| Precision : 75%           | Precision : 72%           |
-| Recall : 80%         | Recall : 78%           |
-| F1-Score : 72%           | F1-Score : 74%           |
----
-## The best Model:
-<img src="./result.png" alt="label propagation" width="900" height="600">
-The SVM model excels with higher precision, making it the preferred choice over 
-the self-training model.
+`Use Cases:` TFX is suitable for organizations leveraging TensorFlow for building and deploying machine learning models in production environments.
 ---
 ## Conclusion:
-In conclusion, the model's accuracy may be influenced by external factors such as unpredictable weather or sudden airport changes. Additionally, it's important to note that our study is limited to the available dataset and its features.
+The open source MLOps frameworks provide a good starting point for building an MLOps platform. However, they may not be suitable for all organizations. If you need a more comprehensive MLOps platform, you may need to consider a commercial MLOps platform.
 ---
 # Thanks for your attention !
 ---
+
 """
-st.markdown("## Aero delay project presentation")
+st.markdown("## MLOPS presentation")
 with st.sidebar:
     st.header("Component Parameters")
     theme = st.selectbox("Theme", ["black", "black-contrast", "blood", "dracula", "moon", "white", "white-contrast", "league", "beige", "sky", "night", "serif", "simple", "solarized"])
@@ -127,10 +107,12 @@ with st.sidebar:
     plugins = st.multiselect("Plugins", ["highlight", "katex", "mathjax2", "mathjax3", "notes", "search", "zoom"], [])
     st.subheader("Initial State")
     hslidePos = st.number_input("Horizontal Slide Position", value=0)
+    vslidePos = st.number_input("Vertical Slide Position", value=0)
+    fragPos = st.number_input("Fragment Position", value=-1)
     overview = st.checkbox("Show Overview", value=False)
     paused = st.checkbox("Pause", value=False)
 
-# Add the streamlit-reveal-slide component to the Streamlit app.                    
+                    
 currState = rs.slides(sample_markdown, 
                     height=height, 
                     theme=theme, 
@@ -145,7 +127,10 @@ currState = rs.slides(sample_markdown,
                             }, 
                     initial_state={
                                     "indexh": hslidePos, 
+                                    "indexv": vslidePos, 
+                                    "indexf": fragPos, 
                                     "paused": paused, 
                                     "overview": overview 
-                                    },  
+                                    }, 
+                    markdown_props={"data-separator-vertical":"^--$"}, 
                     key="foo")
